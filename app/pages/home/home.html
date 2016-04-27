@@ -1,0 +1,23 @@
+<ion-navbar primary *navbar>
+  <ion-title>
+    Ionic 2 Dropbox
+  </ion-title>
+  <ion-buttons start>
+    <button *ngIf="depth" (click)="goBack()"><ion-icon name="arrow-back"></ion-icon> Back</button> 
+  </ion-buttons>
+</ion-navbar>
+
+<ion-content class="home">
+
+  <ion-list>
+    <div *ngFor="#folder of folders">
+      <ion-item *ngIf="folder['.tag'] == 'folder'" detail-push (click)="openFolder(folder.path_lower)">
+        {{folder.name}}
+      </ion-item>
+      <ion-item *ngIf="folder['.tag'] == 'file'">
+        {{folder.name}}
+      </ion-item>
+    </div>
+  </ion-list>
+
+</ion-content>
